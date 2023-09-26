@@ -15,7 +15,7 @@ func HelloI18nWho(who, lang string) (string, error) {
 	case "fr":
 		return "Bonjour " + who + "!", nil
 	default:
-		return "Hello " + who + "!", fmt.Errorf("language %v is unknown!", lang)
+		return "Hello " + who + "!", fmt.Errorf("language %v is unknown", lang)
 	}
 }
 
