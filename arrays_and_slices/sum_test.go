@@ -26,6 +26,7 @@ func TestSumAll(t *testing.T) {
 		{[][]int{{1, 2}, {3, 4}}, []int{3, 7}},
 		{[][]int{{1, 1, 1}, {0, 0, 0}}, []int{3, 0}},
 		{[][]int{{}, {0, 0, 0}}, []int{0, 0}},
+		{[][]int{{1, 2, 3}, {}}, []int{6, 0}},
 		{[][]int{{}, {}}, []int{0, 0}},
 	}
 	for _, tc := range testCases {
