@@ -10,6 +10,37 @@ func Sum(numbers []int) int {
 	return sum
 }
 
+func SumAll(numbersToSum ...[]int) []int {
+	var sums []int
+	for _, numbers := range numbersToSum {
+		sums = append(sums, Sum(numbers))
+	}
+	return sums
+}
+
+func TestSumAll(t *testing.T) {
+	testCases := []struct {
+		numbers  [][]int
+		expected []int
+	}{
+		{[][]int{{1, 2}, {3, 4}}, []int{3, 7}},
+		{[][]int{{1, 1, 1}, {0, 0, 0}}, []int{3, 0}},
+		{[][]int{{}, {0, 0, 0}}, []int{0, 0}},
+		{[][]int{{}, {}}, []int{0, 0}},
+	}
+	for _, tc := range testCases {
+		got := SumAll(tc.numbers...)
+		if len(got) != len(tc.expected) {
+			t.Errorf("got %v want %v given, %v", got, tc.expected, tc.numbers)
+		}
+		for i := 0; i < len(tc.expected); i++ {
+			if got[i] != tc.expected[i] {
+				t.Errorf("got %v want %v given, %v", got, tc.expected, tc.numbers)
+			}
+		}
+	}
+}
+
 func TestSum(t *testing.T) {
 
 	testCases := []struct {
