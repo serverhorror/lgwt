@@ -1,6 +1,7 @@
 package iteration
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 )
@@ -12,6 +13,12 @@ func Repeat(character string) string {
 		sb.WriteString(character)
 	}
 	return sb.String()
+}
+
+func ExampleRepeat() {
+	repeated := Repeat("a")
+	fmt.Println(repeated)
+	// Output: aaaaa
 }
 
 func TestRepeat(t *testing.T) {
