@@ -3,6 +3,9 @@ package main
 import "fmt"
 
 func HelloWho(who string) string {
+	if who == "" {
+		who = "World"
+	}
 	return "Hello " + who + "!"
 }
 
