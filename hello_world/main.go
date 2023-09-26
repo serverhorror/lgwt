@@ -1,5 +1,11 @@
 package main
 
-func main(){
-	println("Hello World")
+import "fmt"
+
+func HelloWorld() string {
+	return "Hello World!"
+}
+
+func main() {
+	fmt.Println(HelloWorld())
 }
