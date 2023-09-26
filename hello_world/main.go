@@ -6,13 +6,15 @@ func HelloI18nWho(who, lang string) (string, error) {
 	if who == "" {
 		who = "World"
 	}
-	if lang == "en" {
+
+	switch lang {
+	case "en":
 		return "Hello " + who + "!", nil
-	} else if lang == "es" {
+	case "es":
 		return "Hola " + who + "!", nil
-	} else if lang == "fr" {
+	case "fr":
 		return "Bonjour " + who + "!", nil
-	} else {
+	default:
 		return "Hello " + who + "!", fmt.Errorf("Language %v is unknown!", lang)
 	}
 }
