@@ -5,10 +5,25 @@ import (
 )
 
 func TestI18NHelloWho(t *testing.T) {
-	got, err := HelloI18nWho("Alice", "en")
-	want := "Hello Alice!"
-	wantErr := true
-	assertCorrectMessageWithErr(t, got, want, err, wantErr)
+	testCases := []struct {
+		who     string
+		lang    string
+		want    string
+		wantErr bool
+	}{
+		{"", "en", "Hello World!", false},
+		{"", "es", "Hola World!", false},
+		{"", "fr", "Bonjour World!", false},
+		{"", "de", "Hello World!", true},
+		{"Alice", "en", "Hello Alice!", false},
+		{"Alice", "es", "Hola Alice!", false},
+		{"Alice", "fr", "Bonjour Alice!", false},
+		{"Alice", "de", "Hello Alice!", true},
+	}
+	for _, tc := range testCases {
+		got, err := HelloI18nWho(tc.who, tc.lang)
+		assertCorrectMessageWithErr(t, got, tc.want, err, tc.wantErr)
+	}
 }
 
 func TestHelloWho(t *testing.T) {
