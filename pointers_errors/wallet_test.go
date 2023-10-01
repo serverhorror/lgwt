@@ -55,7 +55,7 @@ func TestWalletOperations(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			if err := tc.op(&tc.wallet, tc.amount); !errors.Is(err, tc.wantErr) {
-				t.Error(err)
+				t.Errorf("expected: %#v, got: %#v", tc.wantErr, err)
 			}
 			assertBalance(t, tc.wallet, tc.want)
 		})
